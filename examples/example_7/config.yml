@@ -1,0 +1,31 @@
+log:
+  level: -1
+  enablejson: false
+
+config:
+  http:
+    bind-address: localhost
+    port: 8080
+    shutdown-timeout: 400ms
+    static-content:
+      - url-prefix: /static
+        indexes: false
+        document-root: /Users/marioa.imperato
+
+#    html-content: /templates/*
+
+    server-context:
+      path: /api
+      context:
+        sys-metrics-endpoint: /metrics
+    mw-use:
+      - gin-mw-metrics
+      - gin-mw-tracing
+      - gin-mw-error
+
+  mw-handler-registry:
+    gin-mw-metrics:
+    gin-mw-tracing:
+    gin-mw-error:
+      disclose-error-info: true
+

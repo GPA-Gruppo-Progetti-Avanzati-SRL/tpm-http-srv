@@ -1,0 +1,20 @@
+config:
+  http:
+    bind-address: localhost
+    port: 8080
+    shutdown-timeout: 400ms
+    server-context:
+      path: /api
+    mw-use:
+      - gin-mw-metrics
+      - gin-mw-tracing
+      - gin-mw-error
+
+  mw-handler-registry:
+    gin-mw-tracing:
+
+    gin-mw-error:
+      disclose-error-info: true
+
+    gin-mw-metrics:
+
