@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/middleware"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
 	"github.com/dn365/gin-zerolog"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"

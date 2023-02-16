@@ -2,8 +2,8 @@ package example_6_test
 
 import (
 	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
-	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/middleware"
 	_ "embed"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
 
 	"testing"
 )
