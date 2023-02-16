@@ -3,14 +3,19 @@ package example_4_test
 import (
 	_ "GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/examples/example_4"
 	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"testing"
 	"time"
 )
 
 func TestNewServer(t *testing.T) {
+
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 
 	s, err := httpsrv.NewServer(httpsrv.DefaultConfig,
 		httpsrv.WithBindAddress("localhost"),

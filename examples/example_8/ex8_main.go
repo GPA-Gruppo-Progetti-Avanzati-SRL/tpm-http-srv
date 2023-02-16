@@ -7,8 +7,15 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
-	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive/hartracing"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive/hartracing/logzerotracer"
+	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mwhartracing"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mwregistry"
+	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwerror"
+	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwmetrics"
+	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwtracing"
 	"github.com/opentracing/opentracing-go"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/uber/jaeger-client-go"
 	jaegercfg "github.com/uber/jaeger-client-go/config"
@@ -33,7 +40,7 @@ type ExampleConfig struct {
 
 type AppConfig struct {
 	Http       httpsrv.Config
-	MwRegistry middleware.HandlerCatalogConfig `yaml:"mw-handler-registry" mapstructure:"mw-handler-registry"`
+	MwRegistry mwregistry.HandlerCatalogConfig `yaml:"mw-handler-registry" mapstructure:"mw-handler-registry"`
 }
 
 func (m *AppConfig) PostProcess() error {
@@ -55,6 +62,11 @@ var configFile []byte
 
 func main() {
 
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+
+	t, _ := logzerotracer.NewTracer()
+	hartracing.SetGlobalTracer(t)
+
 	exampleCfg := ExampleConfig{}
 
 	cfgFile, err := os.ReadFile("examples/example_8/config.yml")
@@ -72,7 +84,7 @@ func main() {
 	fmt.Println(string(b))
 
 	if appCfg.MwRegistry != nil {
-		if err := middleware.InitializeHandlerRegistry(appCfg.MwRegistry, appCfg.Http.MwUse); err != nil {
+		if err := mwregistry.InitializeHandlerRegistry(appCfg.MwRegistry, appCfg.Http.MwUse); err != nil {
 			log.Fatal().Err(err).Send()
 		}
 	}

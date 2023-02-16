@@ -1,7 +1,8 @@
 package main
 
 import (
-	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mwregistry"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws"
 	"github.com/gin-gonic/gin"
 	"github.com/mitchellh/mapstructure"
 	"github.com/rs/zerolog/log"
@@ -9,8 +10,9 @@ import (
 )
 
 func init() {
-	log.Info().Msg("example_8 registering a middleware handler")
-	middleware.RegisterHandlerFactory(HarTracingHandlerId, NewHarTracingHandler)
+	const semLogContext = "example-8-middleware::init"
+	log.Info().Msg(semLogContext)
+	mwregistry.RegisterHandlerFactory(HarTracingHandlerId, NewHarTracingHandler)
 }
 
 const (
@@ -29,13 +31,13 @@ var DefaultHarTracingHandlerConfig = HarTracingHandlerConfig{}
 
 // NewErrorHandler builds an Error Handler with the following options:
 
-func NewHarTracingHandler(cfg interface{}) (middleware.MiddlewareHandler, error) {
+func NewHarTracingHandler(cfg interface{}) (mws.MiddlewareHandler, error) {
 
 	const semLogContext = "new-har-tracing-handler"
 	tcfg := DefaultHarTracingHandlerConfig
 
 	if cfg != nil && !reflect.ValueOf(cfg).IsNil() {
-		if mapCfg, ok := cfg.(middleware.HandlerConfig); ok {
+		if mapCfg, ok := cfg.(mws.MiddlewareHandlerConfig); ok {
 			err := mapstructure.Decode(mapCfg, &tcfg)
 			if err != nil {
 				return nil, err

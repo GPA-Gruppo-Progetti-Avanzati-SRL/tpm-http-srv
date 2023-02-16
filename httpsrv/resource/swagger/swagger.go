@@ -9,7 +9,8 @@ import (
 )
 
 func init() {
-	log.Info().Msg("swagger resources init function invoked")
+	const semLogContext = "swagger-resource::init"
+	log.Info().Msg(semLogContext)
 	ra := httpsrv.GetApp()
 	ra.RegisterGFactory(registerSwaggerhEndpoint)
 }

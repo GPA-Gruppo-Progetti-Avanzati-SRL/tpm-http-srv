@@ -3,14 +3,17 @@ package example_6_test
 import (
 	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
 	_ "embed"
-	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mwregistry"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+	"os"
 
 	"testing"
 )
 
 type AppConfig struct {
 	Http       httpsrv.Config
-	MwRegistry middleware.HandlerCatalogConfig `yaml:"mw-handler-registry" mapstructure:"mw-handler-registry"`
+	MwRegistry mwregistry.HandlerCatalogConfig `yaml:"mw-handler-registry" mapstructure:"mw-handler-registry"`
 }
 
 func (m *AppConfig) PostProcess() error {
@@ -32,6 +35,8 @@ var configFile []byte
 
 func TestConfigFile(t *testing.T) {
 
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+
 	appCfg := &AppConfig{}
 
 	/*
@@ -49,7 +54,7 @@ func TestConfigFile(t *testing.T) {
 	t.Logf("%+v\n", appCfg)
 
 	if appCfg.MwRegistry != nil {
-		if err := middleware.InitializeHandlerRegistry(appCfg.MwRegistry, appCfg.Http.MwUse); err != nil {
+		if err := mwregistry.InitializeHandlerRegistry(appCfg.MwRegistry, appCfg.Http.MwUse); err != nil {
 			t.Fatal(err)
 		}
 	}

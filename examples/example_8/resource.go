@@ -2,7 +2,7 @@ package main
 
 import (
 	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
-	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwerror"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
 	"net/http"
@@ -15,7 +15,8 @@ import (
  * when the server gets started....
  */
 func init() {
-	log.Info().Msg("example_7 init function invoked")
+	const semLogContext = "example-8-resource::init"
+	log.Info().Msg(semLogContext)
 	ra := httpsrv.GetApp()
 	ra.RegisterGFactory(registerGroups)
 }
@@ -34,7 +35,7 @@ func registerGroups(_ httpsrv.ServerContext) []httpsrv.G {
 				Name:          "home",
 				Path:          "",
 				Method:        http.MethodGet,
-				RouteHandlers: []httpsrv.H{example()},
+				RouteHandlers: []httpsrv.H{exampleHome()},
 			},
 			{
 				Name:          "proxy-to-app-home",
@@ -54,6 +55,13 @@ func registerGroups(_ httpsrv.ServerContext) []httpsrv.G {
 	return gs
 }
 
+func exampleHome() httpsrv.H {
+	return func(c *gin.Context) {
+		c.Header("x-header", "my-value")
+		c.Data(200, "application/json", []byte(`{"msg": "hello world!"}`))
+	}
+}
+
 func example() httpsrv.H {
 	return func(c *gin.Context) {
 		site := c.Param("site")
@@ -68,7 +76,7 @@ func example() httpsrv.H {
 
 		if lang == "it" {
 			// c.Error(middleware.NewAppError(middleware.AppErrorWithStatusCode(350), middleware.AppErrorWithText("error text")))
-			c.AbortWithStatusJSON(350, middleware.NewAppError(middleware.AppErrorWithStatusCode(350), middleware.AppErrorWithText("error text")))
+			c.AbortWithStatusJSON(350, mwerror.NewAppError(mwerror.AppErrorWithStatusCode(350), mwerror.AppErrorWithText("error text")))
 			return
 		}
 

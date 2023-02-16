@@ -4,7 +4,7 @@ import (
 	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/embedstatic"
 	"context"
 	"fmt"
-	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mwregistry"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
@@ -47,16 +47,17 @@ func NewServer(cfg Config, opts ...CfgOption) (Server, error) {
 // Start starts the httpsrv
 func (s *serverImpl) Start() error {
 
+	const semLogContext = "http-server::start"
 	gin.SetMode(s.cfg.ServerMode)
-	log.Info().Str("server-mode", s.cfg.ServerMode).Msg("http server instantiation...")
+	log.Info().Str("server-mode", s.cfg.ServerMode).Msg(semLogContext)
 
 	mhs := make([]H, 0, len(s.cfg.MwUse)+len(s.cfg.mwHandlers))
 	for _, s := range s.cfg.MwUse {
-		f := middleware.GetHandlerFunc(s)
+		f := mwregistry.GetMiddlewareHandler(s)
 		if f != nil {
 			mhs = append(mhs, f)
 		} else {
-			log.Warn().Str("mw-name", s).Msg("the requested handler cannot be found in handler registry")
+			log.Error().Str("mw-name", s).Msg(semLogContext + " - the requested handler cannot be found in handler registry")
 		}
 	}
 
@@ -83,15 +84,15 @@ func (s *serverImpl) Start() error {
 		Handler: s.engine,
 	}
 
-	log.Info().Str("server-mode", s.cfg.ServerMode).Msg("http server starting...")
+	log.Info().Str("server-mode", s.cfg.ServerMode).Msg(semLogContext + " - starting...")
 
 	go func() {
 		s.isReady = true
 		if err := s.srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Error().Err(err).Int("port", s.cfg.ListenPort).Msg("http server error on start up")
+			log.Error().Err(err).Int("port", s.cfg.ListenPort).Msg(semLogContext + " - error on start up")
 		}
 	}()
-	log.Info().Msgf("http server started on port %d", s.cfg.ListenPort)
+	log.Info().Msgf(semLogContext+" started on port %d", s.cfg.ListenPort)
 
 	return nil
 }

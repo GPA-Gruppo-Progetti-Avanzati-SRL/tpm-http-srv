@@ -8,7 +8,8 @@ import (
 )
 
 func init() {
-	log.Info().Msg("health resources init function invoked")
+	const semLogContext = "health-resource::init"
+	log.Info().Msg(semLogContext)
 	ra := httpsrv.GetApp()
 	ra.RegisterGFactory(registerHealthEndpoints)
 }

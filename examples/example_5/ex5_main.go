@@ -2,8 +2,10 @@ package main
 
 import (
 	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
-	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
+	mwerror2 "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwerror"
+	mwtracing2 "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwtracing"
 	"github.com/opentracing/opentracing-go"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/uber/jaeger-client-go"
 	jaegercfg "github.com/uber/jaeger-client-go/config"
@@ -16,6 +18,9 @@ import (
 )
 
 func main() {
+
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+
 	shutdownChannel := make(chan os.Signal, 1)
 	signal.Notify(shutdownChannel, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 
@@ -31,8 +36,8 @@ func main() {
 		httpsrv.WithShutdownTimeout(time.Duration(5)*time.Second),
 		httpsrv.WithContextPath("/api"),
 		httpsrv.WithMiddlewareHandlers(
-			middleware.MustNewTracingHandler(middleware.DefaultTracingHandlerConfig).HandleFunc(),
-			middleware.MustNewErrorHandler(middleware.DefaultErrorHandlerConfig).HandleFunc()))
+			mwtracing2.MustNewTracingHandler(mwtracing2.DefaultTracingHandlerConfig).HandleFunc(),
+			mwerror2.MustNewErrorHandler(mwerror2.DefaultErrorHandlerConfig).HandleFunc()))
 
 	if err != nil {
 		log.Fatal().Err(err).Send()

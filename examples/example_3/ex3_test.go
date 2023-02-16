@@ -3,9 +3,12 @@ package example_3_test
 import (
 	_ "GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/examples/example_3"
 	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"testing"
 	"time"
 )
@@ -14,6 +17,8 @@ import (
  * This example is identical to the example_4. The difference is the way of registration that in here is contestual whereas in example_4 is postponed.
  */
 func TestNewServer(t *testing.T) {
+
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 
 	s, err := httpsrv.NewServer(httpsrv.DefaultConfig,
 		httpsrv.WithBindAddress("localhost"),

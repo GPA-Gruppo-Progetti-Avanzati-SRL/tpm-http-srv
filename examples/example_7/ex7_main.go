@@ -5,8 +5,9 @@ import (
 	_ "GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/resource/health"
 	_ "GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/resource/metrics"
 	_ "embed"
-	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mwregistry"
 	"github.com/opentracing/opentracing-go"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/uber/jaeger-client-go"
 	jaegercfg "github.com/uber/jaeger-client-go/config"
@@ -20,7 +21,7 @@ import (
 
 type AppConfig struct {
 	Http       httpsrv.Config
-	MwRegistry middleware.HandlerCatalogConfig `yaml:"mw-handler-registry" mapstructure:"mw-handler-registry"`
+	MwRegistry mwregistry.HandlerCatalogConfig `yaml:"mw-handler-registry" mapstructure:"mw-handler-registry"`
 }
 
 type S1 struct {
@@ -46,6 +47,8 @@ var configFile []byte
 
 func main() {
 
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+
 	appCfg := AppConfig{}
 
 	/*
@@ -62,7 +65,7 @@ func main() {
 	log.Info().Msgf("read in config is: %+v\n", appCfg)
 
 	if appCfg.MwRegistry != nil {
-		if err := middleware.InitializeHandlerRegistry(appCfg.MwRegistry, appCfg.Http.MwUse); err != nil {
+		if err := mwregistry.InitializeHandlerRegistry(appCfg.MwRegistry, appCfg.Http.MwUse); err != nil {
 			log.Fatal().Err(err).Send()
 		}
 	}

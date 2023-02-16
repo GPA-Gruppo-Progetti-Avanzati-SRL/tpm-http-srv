@@ -13,7 +13,7 @@ import (
  * when the server gets started....
  */
 func init() {
-	log.Info().Msg("example_7 init function invoked")
+	log.Info().Msg("example_7 init function invoked.")
 	ra := httpsrv.GetApp()
 	ra.RegisterGFactory(registerGroups)
 }

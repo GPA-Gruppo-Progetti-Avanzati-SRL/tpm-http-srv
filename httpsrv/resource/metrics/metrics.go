@@ -18,7 +18,8 @@ const (
 )
 
 func init() {
-	log.Info().Msg("metrics resources init function invoked")
+	const semLogContext = "metrics-resource::init"
+	log.Info().Msg(semLogContext)
 	ra := httpsrv.GetApp()
 	ra.RegisterGFactory(registerMetricsEndpoints)
 }

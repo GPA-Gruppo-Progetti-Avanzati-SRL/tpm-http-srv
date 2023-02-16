@@ -1,19 +1,24 @@
 package main
 
 import (
-	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/middleware"
+	mwerror2 "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwerror"
+	mwtracing2 "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwtracing"
 	"github.com/dn365/gin-zerolog"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing/opentracing-go"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/uber/jaeger-client-go"
 	jaegercfg "github.com/uber/jaeger-client-go/config"
 	"github.com/uber/jaeger-lib/metrics"
 	"io"
+	"os"
 )
 
 func main() {
+
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 
 	c, err := initTracer()
 	if err != nil {
@@ -27,8 +32,8 @@ func main() {
 
 	r := gin.New()
 	r.Use(ginzerolog.Logger("gin"),
-		middleware.MustNewTracingHandler(middleware.DefaultTracingHandlerConfig).HandleFunc(),
-		middleware.MustNewErrorHandler(middleware.DefaultErrorHandlerConfig).HandleFunc())
+		mwtracing2.MustNewTracingHandler(mwtracing2.DefaultTracingHandlerConfig).HandleFunc(),
+		mwerror2.MustNewErrorHandler(mwerror2.DefaultErrorHandlerConfig).HandleFunc())
 
 	// if the prefixes match it takes the first... apparently....
 	r.Use(static.Serve("/static2", static.LocalFile("/Users/marioa.imperato/projects/tpm/http/tpm-http-srv/examples/example_1", true)))
@@ -36,7 +41,7 @@ func main() {
 
 	r.GET("/ping", func(c *gin.Context) {
 		// c.AbortWithError(500, errors.New("Ciao"))
-		c.Error(middleware.NewAppError())
+		c.Error(mwerror2.NewAppError())
 		/*
 			c.JSON(200, gin.H{
 				"message": "pong",
