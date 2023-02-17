@@ -1,9 +1,9 @@
 package example_6_test
 
 import (
-	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
 	_ "embed"
 	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mwregistry"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"os"

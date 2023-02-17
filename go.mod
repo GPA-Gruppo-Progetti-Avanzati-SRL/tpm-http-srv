@@ -1,4 +1,4 @@
-module GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv
+module github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv
 
 go 1.19
 

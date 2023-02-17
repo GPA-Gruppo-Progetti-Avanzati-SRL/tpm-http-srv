@@ -1,9 +1,9 @@
 package example_2_test
 
 import (
-	_ "GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/examples/example_2"
-	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
 	"fmt"
+	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/examples/example_2"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"io/ioutil"

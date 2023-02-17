@@ -1,10 +1,10 @@
 package httpsrv
 
 import (
-	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/embedstatic"
 	"context"
 	"fmt"
 	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mwregistry"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/embedstatic"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"

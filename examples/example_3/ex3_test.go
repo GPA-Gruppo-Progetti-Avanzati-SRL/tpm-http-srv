@@ -1,8 +1,8 @@
 package example_3_test
 
 import (
-	_ "GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/examples/example_3"
-	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
+	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/examples/example_3"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/stretchr/testify/assert"

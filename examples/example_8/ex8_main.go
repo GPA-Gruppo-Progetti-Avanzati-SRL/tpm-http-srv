@@ -1,9 +1,6 @@
 package main
 
 import (
-	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
-	_ "GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/resource/health"
-	_ "GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/resource/metrics"
 	_ "embed"
 	"encoding/json"
 	"fmt"
@@ -14,6 +11,9 @@ import (
 	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwerror"
 	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwmetrics"
 	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwtracing"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
+	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/resource/health"
+	_ "github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv/resource/metrics"
 	"github.com/opentracing/opentracing-go"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"

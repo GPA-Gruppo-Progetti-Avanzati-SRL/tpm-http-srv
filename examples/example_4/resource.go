@@ -1,8 +1,8 @@
 package example_4
 
 import (
-	"GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
 	"fmt"
+	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv/httpsrv"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
 	"net/http"
