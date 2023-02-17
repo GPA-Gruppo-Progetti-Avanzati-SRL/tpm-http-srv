@@ -5,6 +5,7 @@ import (
 	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwerror"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
+	"io"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -27,15 +28,21 @@ func registerGroups(_ httpsrv.ServerContext) []httpsrv.G {
 
 	gs = append(gs, httpsrv.G{
 		Name:        "HelloWorldEn",
-		Path:        ":site/:lang",
+		Path:        "v1",
 		UseSysMw:    true,
 		Middlewares: []httpsrv.H{setLangHeader("uk")},
 		Resources: []httpsrv.R{
 			{
 				Name:          "home",
-				Path:          "",
+				Path:          "example-get",
 				Method:        http.MethodGet,
-				RouteHandlers: []httpsrv.H{exampleHome()},
+				RouteHandlers: []httpsrv.H{exampleGet()},
+			},
+			{
+				Name:          "home",
+				Path:          "example-post",
+				Method:        http.MethodPost,
+				RouteHandlers: []httpsrv.H{examplePost()},
 			},
 			{
 				Name:          "proxy-to-app-home",
@@ -55,9 +62,25 @@ func registerGroups(_ httpsrv.ServerContext) []httpsrv.G {
 	return gs
 }
 
-func exampleHome() httpsrv.H {
+func exampleGet() httpsrv.H {
 	return func(c *gin.Context) {
-		c.Header("x-header", "my-value")
+		const semLogContext = "example-get"
+		c.Header("x-header", semLogContext)
+		c.Data(200, "application/json", []byte(`{"msg": "hello world!"}`))
+	}
+}
+
+func examplePost() httpsrv.H {
+
+	return func(c *gin.Context) {
+		const semLogContext = "example-post"
+		bd, err := io.ReadAll(c.Request.Body)
+		if err != nil {
+			log.Error().Err(err).Msg(semLogContext)
+		} else {
+			log.Trace().Str("body", string(bd)).Msg(semLogContext)
+		}
+		c.Header("x-header", "example-post-header")
 		c.Data(200, "application/json", []byte(`{"msg": "hello world!"}`))
 	}
 }
