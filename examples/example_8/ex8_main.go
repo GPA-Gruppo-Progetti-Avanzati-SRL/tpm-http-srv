@@ -64,7 +64,10 @@ func main() {
 
 	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 
-	t, _ := logzerotracer.NewTracer()
+	t, _, err := logzerotracer.NewTracer()
+	if err != nil {
+		log.Fatal().Err(err).Send()
+	}
 	hartracing.SetGlobalTracer(t)
 
 	exampleCfg := ExampleConfig{}
