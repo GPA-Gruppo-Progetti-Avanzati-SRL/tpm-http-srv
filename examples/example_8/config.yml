@@ -19,29 +19,29 @@ config:
       context:
         sys-metrics-endpoint: /metrics
     mw-use:
-      - gin-mw-metrics
-      - gin-mw-tracing
-      - gin-mw-har-tracing
-      - gin-mw-error
+      - mw-metrics
+      - mw-tracing
+      - mw-har-tracing
+      - mw-error
 
   mw-handler-registry:
-    gin-mw-metrics:
+    mw-metrics:
 #      namespace: example
 #      subsystem: "08"
-    gin-mw-tracing:
+    mw-tracing:
       tags:
         - name: request.id
           type: header
           value: requestId
-    gin-mw-error:
+    mw-error:
       with-info: true
 #      alphabet: "0123456789"
       span-tag: error.id
       header: x-errid
       status-code-policy:
-        policy-mode: if-unlisted
-        status-codes:
+        mode: if-unlisted
+        ranges:
           - from: 200
-            to: 399
+            to: 299
 
 
