@@ -33,10 +33,10 @@ cloud.google.com/go/storage v1.10.0/go.mod h1:FLPqc6j+Ki4BU591ie1oL6qBQGu2Bl/tZ9
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.10 h1:catJj8aEX8pC6YZt15FWEE70I4RBdzybta5KfZRpu8I=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.10/go.mod h1:88tO3akDoeM6hmHzMJESdEjM4XdvjO8cuXNf9LR4AxM=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.10 h1:ka3gJ0nDmcjVjogTbmz1NYXF+IFsrWKJXEwhUZAlGz8=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.10/go.mod h1:KzD14KmjPKJZLWwQaujqsgN/2GapviG1qrT9WAmQ+cM=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.11 h1:OhlmeSLofno85z1/UR22Pr/hmdL6qr3kYTmzxZy6goA=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.11/go.mod h1:88tO3akDoeM6hmHzMJESdEjM4XdvjO8cuXNf9LR4AxM=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.11 h1:nuKhgCuZx6AAnlCl4Nbf2EZfUWMrOdh1GZaMhmnUsuc=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.11/go.mod h1:xuRWicDrxvwnmn6JG3n9icfLBqp86MSw2oqAFT4pnPQ=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2 h1:5IcZpTvzydCQeHzK4Ef/D5rrSqwxob0t8PQPMybUNFM=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2/go.mod h1:yDgFjdqOqDEKOvasDdhWNXYg9BVp4O+o5f6V/ehm6Oo=
 github.com/KyleBanks/depth v1.2.1 h1:5h8fQADFrWtarTdtDudMmGsC7GPbOAu6RVB3ffsVFHc=
