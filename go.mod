@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.16
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.16
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.18-RC1
 	github.com/dn365/gin-zerolog v0.0.0-20171227063204-b43714b00db1
 	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.8.2

@@ -39,6 +39,8 @@ github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.16 h1:/T2/mRjr
 github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.16/go.mod h1:88tO3akDoeM6hmHzMJESdEjM4XdvjO8cuXNf9LR4AxM=
 github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.16 h1:aFbp8mPrU0CVfpgOAuovmRkTUPrgdUhntIN6cRQkSBc=
 github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.16/go.mod h1:x08WlIuAYimT7du0EXTuSxuNo0wktCLX1hg6l9dz6lM=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.18-RC1 h1:Hdi2ldMOufU3Um8TPG7qD6451hsSUrfIX/KF4rYltC8=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.18-RC1/go.mod h1:x08WlIuAYimT7du0EXTuSxuNo0wktCLX1hg6l9dz6lM=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2 h1:5IcZpTvzydCQeHzK4Ef/D5rrSqwxob0t8PQPMybUNFM=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2/go.mod h1:yDgFjdqOqDEKOvasDdhWNXYg9BVp4O+o5f6V/ehm6Oo=
 github.com/KyleBanks/depth v1.2.1 h1:5h8fQADFrWtarTdtDudMmGsC7GPbOAu6RVB3ffsVFHc=
