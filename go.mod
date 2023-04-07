@@ -3,8 +3,8 @@ module github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv
 go 1.19
 
 require (
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.16
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.18-RC1
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.18
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.18
 	github.com/dn365/gin-zerolog v0.0.0-20171227063204-b43714b00db1
 	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.8.2
@@ -41,9 +41,11 @@ require (
 	github.com/go-playground/validator/v10 v10.11.2 // indirect
 	github.com/goccy/go-json v0.9.11 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
+	github.com/lucasjones/reggen v0.0.0-20200904144131-37ba4fa293bb // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/matoous/go-nanoid v1.5.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
