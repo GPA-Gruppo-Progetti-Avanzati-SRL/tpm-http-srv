@@ -37,8 +37,8 @@ github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.0.91 h1:4l+l+N8oYfa84y
 github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.0.91/go.mod h1:WZLFgy+qbyanFBP25v+0WVvcqgYJHCeqsRmVSWXMC2o=
 github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.19 h1:Z8KOZCZmxoOuWzv2w3Io9y7GSxHELVR7ca4vw0fNaV8=
 github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.19/go.mod h1:88tO3akDoeM6hmHzMJESdEjM4XdvjO8cuXNf9LR4AxM=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.20-RC1 h1:UuGG9cKZ0J+rBqqt8P7MpuEugaMi/u3biIeDrSo+E28=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.20-RC1/go.mod h1:cpcgMVyaVak+DcVK7Aow7RJUNkUED5GA536JibfGYQM=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.20-RC2 h1:TeCtFMAZTvP3oXJr+gqxF7ocv9LPSioVg9Q9P0OyJAg=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.20-RC2/go.mod h1:cpcgMVyaVak+DcVK7Aow7RJUNkUED5GA536JibfGYQM=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2 h1:5IcZpTvzydCQeHzK4Ef/D5rrSqwxob0t8PQPMybUNFM=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2/go.mod h1:yDgFjdqOqDEKOvasDdhWNXYg9BVp4O+o5f6V/ehm6Oo=
 github.com/KyleBanks/depth v1.2.1 h1:5h8fQADFrWtarTdtDudMmGsC7GPbOAu6RVB3ffsVFHc=
