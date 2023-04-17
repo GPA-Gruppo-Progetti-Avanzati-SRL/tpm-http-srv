@@ -3,8 +3,8 @@ module github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv
 go 1.19
 
 require (
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.19
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.20-RC2
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.20
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.20
 	github.com/dn365/gin-zerolog v0.0.0-20171227063204-b43714b00db1
 	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.8.2
@@ -62,10 +62,10 @@ require (
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
 	golang.org/x/crypto v0.5.0 // indirect
-	golang.org/x/net v0.5.0 // indirect
-	golang.org/x/sys v0.4.0 // indirect
-	golang.org/x/text v0.6.0 // indirect
-	golang.org/x/tools v0.1.12 // indirect
+	golang.org/x/net v0.9.0 // indirect
+	golang.org/x/sys v0.7.0 // indirect
+	golang.org/x/text v0.9.0 // indirect
+	golang.org/x/tools v0.6.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
