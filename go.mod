@@ -23,7 +23,7 @@ require (
 )
 
 require (
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.0.91 // indirect
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.0.92 // indirect
 	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
