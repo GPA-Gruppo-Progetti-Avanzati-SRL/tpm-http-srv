@@ -70,7 +70,7 @@ func newRouter(serverContext ServerContext, mws []H, pathsNotToLog []string) *gi
 	r.Use(gin.Recovery())
 
 	withPprof := false
-	if prf, ok := serverContext.Get("with-pprof"); ok {
+	if prf, ok := serverContext.GetConfig("with-pprof"); ok {
 		if b, ok := prf.(bool); ok && b {
 			withPprof = true
 			log.Info().Msg(semLogContext + " pprof handler enabled")
