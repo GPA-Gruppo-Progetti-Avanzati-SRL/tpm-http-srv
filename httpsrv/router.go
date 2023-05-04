@@ -64,10 +64,23 @@ type R struct {
 
 func newRouter(serverContext ServerContext, mws []H, pathsNotToLog []string) *gin.Engine {
 
+	const semLogContext = "http-srv::new-router"
 	r := gin.New()
 	r.Use(mwzerologger.ZeroLogger("gin", pathsNotToLog...))
 	r.Use(gin.Recovery())
-	pprof.Register(r, pprof.DefaultPrefix)
+
+	withPprof := false
+	if prf, ok := serverContext.Get("with-pprof"); ok {
+		if b, ok := prf.(bool); ok && b {
+			withPprof = true
+			log.Info().Msg(semLogContext + " pprof handler enabled")
+			pprof.Register(r, pprof.DefaultPrefix)
+		}
+	}
+
+	if !withPprof {
+		log.Info().Msg(semLogContext + " pprof handler NOT enabled (if needed set the with-pprof param to true in server-context.context")
+	}
 
 	/*
 		for _, mw := range mws {
