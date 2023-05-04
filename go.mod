@@ -6,6 +6,7 @@ require (
 	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.0.23
 	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.0.23
 	github.com/dn365/gin-zerolog v0.0.0-20171227063204-b43714b00db1
+	github.com/gin-contrib/pprof v1.4.0
 	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.9.0
 	github.com/mitchellh/mapstructure v1.5.0

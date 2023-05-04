@@ -3,6 +3,7 @@ package httpsrv
 import (
 	"fmt"
 	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwzerologger"
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
 	"net/http"
@@ -66,6 +67,7 @@ func newRouter(serverContext ServerContext, mws []H, pathsNotToLog []string) *gi
 	r := gin.New()
 	r.Use(mwzerologger.ZeroLogger("gin", pathsNotToLog...))
 	r.Use(gin.Recovery())
+	pprof.Register(r, pprof.DefaultPrefix)
 
 	/*
 		for _, mw := range mws {
