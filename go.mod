@@ -5,8 +5,8 @@ go 1.21
 toolchain go1.21.1
 
 require (
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.4
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.4
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.5
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.5
 	github.com/dn365/gin-zerolog v0.0.0-20171227063204-b43714b00db1
 	github.com/gin-contrib/pprof v1.5.0
 	github.com/gin-contrib/static v1.1.2
