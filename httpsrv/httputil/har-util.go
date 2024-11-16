@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func newHarRequest(c *gin.Context) (*har.Request, error) {
+func NewHarRequest(c *gin.Context) (*har.Request, error) {
 	const semLogContext = "http-server::har-request-from-http-request"
 
 	var err error
