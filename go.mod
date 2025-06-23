@@ -5,8 +5,8 @@ go 1.21.0
 toolchain go1.23.3
 
 require (
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.19
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.19
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.20
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.20
 	github.com/dn365/gin-zerolog v0.0.0-20171227063204-b43714b00db1
 	github.com/gin-contrib/pprof v1.5.2
 	github.com/gin-contrib/static v1.1.3
@@ -26,7 +26,7 @@ require (
 )
 
 require (
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.1.73 // indirect
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.1.81 // indirect
 	github.com/HdrHistogram/hdrhistogram-go v1.1.2 // indirect
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -79,4 +79,5 @@ require (
 	golang.org/x/text v0.21.0 // indirect
 	golang.org/x/tools v0.23.0 // indirect
 	google.golang.org/protobuf v1.36.1 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
