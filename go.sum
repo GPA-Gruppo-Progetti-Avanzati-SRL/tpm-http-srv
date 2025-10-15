@@ -1,11 +1,11 @@
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.1.83 h1:PiiLKNew9x5KU+03EDCuEgtAKWMOOOvG8mEu58xrx7g=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.1.83/go.mod h1:4WYfJ0LgWLu38TukgFrFN4/zLePQ1BhFkpH/k28zRlA=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.21 h1:wQj5bld9JIJuuHqb/KyT26bq81S/TTea74Rd2/XOyoY=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.21/go.mod h1:I2xOAJ9knHP6pmHZPqkLvUeUwfnzjcQeKY6jw2IuUgg=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.21 h1:8jEOgEKKJytfLRv+Q8MkHjg0laMugLp+F64YGZpZdGg=
-github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.21/go.mod h1:O44s0sl/wunBDRy3KrXoMnh4vhdLZhKmPPWuYZF3HkA=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.1.85 h1:qtAy8lveC6ScNm5p5HAUna/+KslZyZ8yjxANbzaDYRw=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-common v0.1.85/go.mod h1:Q456LEsf8ywWb9GU1sIesWakRSIWe6MisfM2Q5lDJlw=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.22 h1:Y9xmOW3B62HAE8/+DK8Q5ofQQlyQzYOoCHZlYg1BXX0=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.22/go.mod h1:kTw2sXdH2XfmeJ+q/w6xDOPFmMRFJPGOhy/ZhkKCTOw=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.22 h1:Iuly0vQ3s7XnDAOUif1VV9luEm6H7bDwF+HKHVzBPXQ=
+github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.22/go.mod h1:1zQkZDf6F2kcioD/AdapDGfWqMDSofjEUzBf6nPcFg0=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2 h1:5IcZpTvzydCQeHzK4Ef/D5rrSqwxob0t8PQPMybUNFM=
 github.com/HdrHistogram/hdrhistogram-go v1.1.2/go.mod h1:yDgFjdqOqDEKOvasDdhWNXYg9BVp4O+o5f6V/ehm6Oo=
 github.com/KyleBanks/depth v1.2.1 h1:5h8fQADFrWtarTdtDudMmGsC7GPbOAu6RVB3ffsVFHc=
