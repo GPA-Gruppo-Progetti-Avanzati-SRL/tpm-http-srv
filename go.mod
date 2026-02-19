@@ -1,6 +1,6 @@
 module github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv
 
-go 1.25.5
+go 1.26
 
 require (
 	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.22
