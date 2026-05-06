@@ -3,8 +3,8 @@ module github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-srv
 go 1.26
 
 require (
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.27
-	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.27
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-archive v0.1.28
+	github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware v0.1.28
 	github.com/dn365/gin-zerolog v0.0.0-20171227063204-b43714b00db1
 	github.com/gin-contrib/pprof v1.5.4
 	github.com/gin-contrib/static v1.1.6
