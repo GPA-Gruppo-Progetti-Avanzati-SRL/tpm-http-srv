@@ -70,11 +70,7 @@ func newRouter(serverContext ServerContext, mws []H, pathsNotToLog []string, gzi
 	r.Use(mwzerologger.ZeroLogger("gin", pathsNotToLog...))
 	r.Use(gin.Recovery())
 
-	// Gzip globale: si applica a tutte le route SPA e ai file statici.
-	// Va registrato subito dopo Recovery, prima di qualsiasi route o r.Use(static.Serve(...)),
-	// in modo che il ResponseWriter compresso sia attivo per tutta la catena successiva.
-	// Per escludere path specifici usare excluded-paths (match esatto) o
-	// excluded-paths-regexs (regexp) in config.yml.
+	// Gzip middleware registered early so the compressed ResponseWriter is active for all subsequent handlers.
 	if gzipCfg != nil && gzipCfg.Enabled {
 		level := gzipCfg.Level
 		if level == 0 {
