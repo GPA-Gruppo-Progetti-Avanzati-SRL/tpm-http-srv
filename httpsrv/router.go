@@ -3,6 +3,7 @@ package httpsrv
 import (
 	"fmt"
 	"github.com/GPA-Gruppo-Progetti-Avanzati-SRL/tpm-http-middleware/mws/mwzerologger"
+	ginzgzip "github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
@@ -62,12 +63,36 @@ type R struct {
 	RouteHandlers []H
 }
 
-func newRouter(serverContext ServerContext, mws []H, pathsNotToLog []string) *gin.Engine {
+func newRouter(serverContext ServerContext, mws []H, pathsNotToLog []string, gzipCfg *GzipConfig) *gin.Engine {
 
 	const semLogContext = "http-srv::new-router"
 	r := gin.New()
 	r.Use(mwzerologger.ZeroLogger("gin", pathsNotToLog...))
 	r.Use(gin.Recovery())
+
+	// Gzip globale: si applica a tutte le route SPA e ai file statici.
+	// Va registrato subito dopo Recovery, prima di qualsiasi route o r.Use(static.Serve(...)),
+	// in modo che il ResponseWriter compresso sia attivo per tutta la catena successiva.
+	// Per escludere path specifici usare excluded-paths (match esatto) o
+	// excluded-paths-regexs (regexp) in config.yml.
+	if gzipCfg != nil && gzipCfg.Enabled {
+		level := gzipCfg.Level
+		if level == 0 {
+			level = ginzgzip.DefaultCompression
+		}
+		var gzipOpts []ginzgzip.Option
+		if len(gzipCfg.ExcludedPaths) > 0 {
+			gzipOpts = append(gzipOpts, ginzgzip.WithExcludedPaths(gzipCfg.ExcludedPaths))
+		}
+		if len(gzipCfg.ExcludedPathsRegexs) > 0 {
+			gzipOpts = append(gzipOpts, ginzgzip.WithExcludedPathsRegexs(gzipCfg.ExcludedPathsRegexs))
+		}
+		r.Use(ginzgzip.Gzip(level, gzipOpts...))
+		log.Info().Int("level", level).
+			Strs("excluded-paths", gzipCfg.ExcludedPaths).
+			Strs("excluded-paths-regexs", gzipCfg.ExcludedPathsRegexs).
+			Msg(semLogContext + " - gzip compression enabled")
+	}
 
 	withPprof := false
 	if prf, ok := serverContext.GetConfig("with-pprof"); ok {
@@ -82,14 +107,7 @@ func newRouter(serverContext ServerContext, mws []H, pathsNotToLog []string) *gi
 		log.Info().Msg(semLogContext + " pprof handler NOT enabled (if needed set the with-pprof param to true in server-context.context")
 	}
 
-	/*
-		for _, mw := range mws {
-			r.Use(gin.HandlerFunc(mw))
-		}
-	*/
-
 	for _, gdef := range application.gRegistry {
-
 		if gdef.UseSysMw {
 			gdef.Middlewares = append(gdef.Middlewares, mws...)
 		}

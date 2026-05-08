@@ -6,6 +6,21 @@ import (
 	"time"
 )
 
+// GzipConfig holds the configuration for gzip compression of HTTP responses.
+// When enabled, compression is applied globally to all routes via gin middleware.
+// Use ExcludedPaths or ExcludedPathsRegexs to opt specific paths out.
+type GzipConfig struct {
+	Enabled bool `json:"enabled" yaml:"enabled" mapstructure:"enabled"`
+	// Level is the zlib compression level: -1=DefaultCompression, 1=BestSpeed, 9=BestCompression.
+	// When omitted or 0, DefaultCompression is used.
+	Level int `json:"level" yaml:"level" mapstructure:"level"`
+	// ExcludedPaths is a list of exact request paths that must not be compressed.
+	ExcludedPaths []string `json:"excluded-paths,omitempty" yaml:"excluded-paths,omitempty" mapstructure:"excluded-paths,omitempty"`
+	// ExcludedPathsRegexs is a list of regular expressions matched against the request path.
+	// Matching requests are excluded from compression.
+	ExcludedPathsRegexs []string `json:"excluded-paths-regexs,omitempty" yaml:"excluded-paths-regexs,omitempty" mapstructure:"excluded-paths-regexs,omitempty"`
+}
+
 type Config struct {
 	BindAddress     string           `json:"bind-address" yaml:"bind-address" mapstructure:"bind-address"`
 	ListenPort      int              `json:"port" yaml:"port" mapstructure:"port"`
@@ -16,6 +31,9 @@ type Config struct {
 
 	Statics     []StaticContent `json:"static-content" yaml:"static-content" mapstructure:"static-content"`
 	HtmlContent string          `json:"html-content" yaml:"html-content" mapstructure:"html-content"`
+
+	// Gzip enables gzip response compression. Disabled when nil or Enabled==false.
+	Gzip *GzipConfig `json:"gzip" yaml:"gzip" mapstructure:"gzip"`
 
 	mwHandlers []H
 	MwUse      []string `json:"mw-use" yaml:"mw-use" mapstructure:"mw-use"`
